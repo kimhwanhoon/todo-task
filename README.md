@@ -1,51 +1,28 @@
-# React + TypeScript + Vite
+# Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## How to run
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install
+npm run server # run json-server
+npm run dev # run vite
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Why used json-server?
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- It's simple and easy to use.
+- It provides a realistic simulation of a RESTful API server with minimal setup
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# todo-task
+## Time tracking note
+
+- 11:10 - 11:20: Project setup
+- 11:20 - 11:50: Basic components
+- 11:50 - 12:00: Styling
+- 12:00 - 13:10: Hooks & App logic
+- 13:10 - 13:20: Readme
+
+## Notes
+
+As I have primarily worked with Next.js recently, this was my first experience using Vite.
+While this led to some additional time spent on project setup, it was a valuable learning experience that helped me understand the differences between these build tools.
+Vite's fast development server and build performance were particularly impressive.
