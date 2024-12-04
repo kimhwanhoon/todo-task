@@ -3,14 +3,19 @@
 ## How to run
 
 ```bash
-# install dependencies
+# 1. Clone the project and install dependencies
+git clone <repository-url>
+cd todo-task
 npm install
-# set env variable
+
+# 2. Set environment variables
 echo "VITE_API_URL=http://localhost:3001" > .env.local
 
-# run json-server
+# 3. Run the application
+# Terminal 1: Start the JSON server (port 3001)
 npm run server
-# run vite
+
+# Terminal 2: Start the Vite development server (port 3000)
 npm run dev
 ```
 
