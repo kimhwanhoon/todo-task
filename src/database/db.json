@@ -1,3 +1,14 @@
 {
-  "todo": []
+  "todo": [
+    {
+      "id": "ce12",
+      "title": "New Todo",
+      "completed": false
+    },
+    {
+      "id": "bdda",
+      "title": "New Todo",
+      "completed": true
+    }
+  ]
 }
