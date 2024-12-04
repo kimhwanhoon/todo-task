@@ -1,15 +1,16 @@
-import clsx from 'clsx'
-import { useRef } from 'react'
+import clsx from 'clsx';
+import { useRef } from 'react';
+import { mainColor } from '../../theme/mainColor';
 
 interface Props {
-  value: string
-  onChange: (value: string) => void
+  value: string;
+  onChange: (value: string) => void;
   classNames?: {
-    container?: string
-    input?: string
-  }
-  leftSection?: React.ReactNode
-  rightSection?: React.ReactNode
+    container?: string;
+    input?: string;
+  };
+  leftSection?: React.ReactNode;
+  rightSection?: React.ReactNode;
 }
 
 export const TextInput = ({
@@ -19,17 +20,18 @@ export const TextInput = ({
   leftSection,
   rightSection,
 }: Props) => {
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <div
+      style={{ '--main-color': mainColor } as React.CSSProperties}
       className={clsx([
         // base
         'flex items-center gap-2 justify-between px-2 py-1 rounded-md border border-[#DEE2E5] cursor-text',
         // focus
-        'focus-within:ring-blue-500 focus-within:ring-1',
+        'focus-within:ring-main focus-within:ring-1',
         // hover
-        'hover:ring-blue-500 hover:ring-1',
+        'hover:ring-main hover:ring-1',
 
         // added classNames
         classNames?.container,
@@ -56,5 +58,5 @@ export const TextInput = ({
       {/* Right Section */}
       {rightSection}
     </div>
-  )
-}
+  );
+};

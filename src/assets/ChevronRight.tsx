@@ -1,8 +1,9 @@
 interface Props {
-  size?: number
-  stroke?: number
-  color?: string
-  className?: string
+  size?: number;
+  stroke?: number;
+  color?: string;
+  className?: string;
+  onClick?: () => void;
 }
 
 export const ChevronRight = ({
@@ -10,6 +11,7 @@ export const ChevronRight = ({
   stroke = 2,
   color = '#ABB5BE',
   className,
+  onClick,
 }: Props) => {
   return (
     <svg
@@ -23,9 +25,10 @@ export const ChevronRight = ({
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
+      onClick={onClick}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M9 6l6 6l-6 6" />
     </svg>
-  )
-}
+  );
+};
