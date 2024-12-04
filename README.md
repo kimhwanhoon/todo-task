@@ -3,9 +3,15 @@
 ## How to run
 
 ```bash
+# install dependencies
 npm install
-npm run server # run json-server
-npm run dev # run vite
+# set env variable
+echo "VITE_API_URL=http://localhost:3001" > .env.local
+
+# run json-server
+npm run server
+# run vite
+npm run dev
 ```
 
 ## Why used json-server?
