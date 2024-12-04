@@ -19,7 +19,7 @@ export const TodoElement = ({ todo, onChange, onDelete }: Props) => {
       <span
         className="text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity"
         onClick={(e) => {
-          e.stopPropagation();
+          e.stopPropagation(); // prevent click event from propagating to parent elements
           onDelete();
         }}
       >

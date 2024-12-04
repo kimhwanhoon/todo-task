@@ -1,9 +1,10 @@
+import type { Filter, Todo } from './types/todo';
+import clsx from 'clsx';
 import { v4 } from 'uuid';
 import { useCallback, useState } from 'react';
 import { TextInput } from './components/input/textInput';
 import { ChevronRight } from './assets/ChevronRight';
 import { FilterButton } from './components/buttons/filterButton';
-import { Filter, Todo } from './types/todo';
 import { useGetTodos } from './hooks/getTodos';
 import { TodoElement } from './components/todoElement';
 
@@ -12,7 +13,7 @@ function App() {
   const [currentFilter, setCurrentFilter] = useState<Filter>('all');
   const [inputValue, setInputValue] = useState('');
 
-  const handleFilter = (filter: 'all' | 'active') => {
+  const handleFilter = (filter: Filter) => {
     setCurrentFilter(filter);
   };
 
@@ -90,6 +91,7 @@ function App() {
           className="space-y-4"
           onSubmit={(e) => handleAddTodo({ e, title: inputValue })}
         >
+          {/* Input */}
           <TextInput
             value={inputValue}
             onChange={setInputValue}
@@ -97,7 +99,12 @@ function App() {
             rightSection={
               <ChevronRight
                 size={20}
-                className="cursor-pointer hover:scale-110 duration-300 ease-in-out hover:border-gray-500 hover:border-2"
+                className={clsx([
+                  // base
+                  'cursor-pointer',
+                  // hover
+                  'hover:scale-110 duration-300 ease-in-out hover:border-gray-500 hover:border-2',
+                ])}
                 onClick={() => handleAddTodo({ title: inputValue })}
               />
             }
@@ -128,6 +135,7 @@ function App() {
           {/* End of Filter Buttons */}
         </form>
 
+        {/* Todos */}
         <section className="space-y-2">
           {/* Loading and Error States */}
           {isLoading ? (
@@ -136,7 +144,7 @@ function App() {
             <p>Error occurred while fetching todos</p>
           ) : null}
 
-          {/* Todos */}
+          {/* Todos list*/}
           <div className="p-4 shadow-sm shadow-gray-400 rounded-md">
             {(() => {
               const filteredTodos = todos.filter((todo) => {
@@ -146,9 +154,7 @@ function App() {
 
               if (filteredTodos.length === 0) {
                 return (
-                  <p className="text-gray-500 text-center">
-                    No active todos found
-                  </p>
+                  <p className="text-gray-500 text-center">No todos found</p>
                 );
               }
 

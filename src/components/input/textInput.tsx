@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import { useRef } from 'react';
-import { mainColor } from '../../theme/mainColor';
 
 interface Props {
   value: string;
@@ -24,7 +23,6 @@ export const TextInput = ({
 
   return (
     <div
-      style={{ '--main-color': mainColor } as React.CSSProperties}
       className={clsx([
         // base
         'flex items-center gap-2 justify-between px-2 py-1 rounded-md border border-[#DEE2E5] cursor-text',
