@@ -1,12 +1,13 @@
 import type { Filter, Todo } from './types/todo';
 import clsx from 'clsx';
 import { v4 } from 'uuid';
-import { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { TextInput } from './components/input/textInput';
 import { ChevronRight } from './assets/ChevronRight';
 import { FilterButton } from './components/buttons/filterButton';
 import { useGetTodos } from './hooks/getTodos';
 import { TodoElement } from './components/todoElement';
+import { Progress } from './components/progress/progress';
 
 function App() {
   const { todos, isLoading, refetch, error } = useGetTodos();
@@ -84,8 +85,22 @@ function App() {
     [refetch]
   );
 
+  const filteredTodos = React.useMemo(
+    () =>
+      todos.filter((todo) => {
+        if (currentFilter === 'active') return !todo.completed;
+        return true;
+      }),
+    [todos, currentFilter]
+  );
+
   return (
-    <main className="h-dvh flex flex-col justify-center items-center">
+    <main className="h-dvh flex flex-col justify-center items-center space-y-4">
+      {/* Progress */}
+      <Progress
+        totalLength={todos.length}
+        completedLength={todos.filter((todo) => todo.completed).length}
+      />
       <div className="space-y-4">
         <form
           className="space-y-4"
@@ -147,11 +162,6 @@ function App() {
           {/* Todos list*/}
           <div className="p-4 shadow-sm shadow-gray-400 rounded-md">
             {(() => {
-              const filteredTodos = todos.filter((todo) => {
-                if (currentFilter === 'active') return !todo.completed;
-                return true;
-              });
-
               if (filteredTodos.length === 0) {
                 return (
                   <p className="text-gray-500 text-center">No todos found</p>
